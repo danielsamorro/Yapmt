@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2024
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yapmt", "Yapmt\Yapmt.csproj", "{2D83B642-56F1-4D38-B84C-6F2CD7183175}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2D83B642-56F1-4D38-B84C-6F2CD7183175}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D83B642-56F1-4D38-B84C-6F2CD7183175}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D83B642-56F1-4D38-B84C-6F2CD7183175}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D83B642-56F1-4D38-B84C-6F2CD7183175}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6C212789-6231-45DD-B5DA-2772EA929DA9}
+	EndGlobalSection
+EndGlobal
