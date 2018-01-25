@@ -165,6 +165,10 @@
     <Compile Include="Migrations\201801240418517_AddCompleteStatusToTask.Designer.cs">
       <DependentUpon>201801240418517_AddCompleteStatusToTask.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801251113545_addedCascadeDelete.cs" />
+    <Compile Include="Migrations\201801251113545_addedCascadeDelete.Designer.cs">
+      <DependentUpon>201801251113545_addedCascadeDelete.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\Task.cs" />
@@ -293,6 +297,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801240418517_AddCompleteStatusToTask.resx">
       <DependentUpon>201801240418517_AddCompleteStatusToTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801251113545_addedCascadeDelete.resx">
+      <DependentUpon>201801251113545_addedCascadeDelete.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

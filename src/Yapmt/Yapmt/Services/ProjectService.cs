@@ -23,7 +23,7 @@ namespace Yapmt.Services
 
         public int DeleteProject(int projectId)
         {
-            var project = GetProject(projectId);
+            var project = _dbContext.Projects.Include("Tasks").Where(p => p.Id == projectId).SingleOrDefault();
 
             _dbContext.Projects.Remove(project);
             return _dbContext.SaveChanges();
@@ -39,11 +39,11 @@ namespace Yapmt.Services
             return _dbContext.Projects.Where(p => p.Id == projectId).SingleOrDefault();
         }
 
-        public void AddTask(Task task, int projectId)
+        public int AddTask(Task task, int projectId)
         {
             var project = _dbContext.Projects.Where(p => p.Id == projectId).SingleOrDefault();
             project.Tasks.Add(task);
-            _dbContext.SaveChanges();
+            return _dbContext.SaveChanges();
         }
 
         public void DeleteTask(int taskId)

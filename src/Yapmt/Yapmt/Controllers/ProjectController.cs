@@ -28,14 +28,12 @@ namespace Yapmt.Controllers
             return View(viewModel);
         }
 
+        [HttpPost]
         public ActionResult Delete(int id)
         {
             var success = _projectService.DeleteProject(id);
 
-            if (success > 0)
-                return RedirectToAction("Index", "Home");
-
-            return null;
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult CompleteTask(int id)
@@ -46,11 +44,19 @@ namespace Yapmt.Controllers
         }
 
         [HttpPost]
+        public ActionResult AddTask (int projectId, Task task)
+        {
+            var success =_projectService.AddTask(task, projectId);
+
+            return Redirect(Request.UrlReferrer.ToString());
+        }
+
+        [HttpPost]
         public ActionResult Create(Project project)
         {
             _projectService.AddProject(project);
 
-            return RedirectToAction("Index", "Home");
+            return Redirect(Request.UrlReferrer.ToString());
         }
     }
 }

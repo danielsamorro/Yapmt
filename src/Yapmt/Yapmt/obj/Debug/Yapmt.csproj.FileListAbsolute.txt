@@ -48,3 +48,4 @@ C:\Users\dmssa\Documents\GitHub\Yapmt\src\Yapmt\Yapmt\obj\Debug\Yapmt.Migrations
 C:\Users\dmssa\Documents\GitHub\Yapmt\src\Yapmt\Yapmt\obj\Debug\Yapmt.csproj.GenerateResource.Cache
 C:\Users\dmssa\Documents\GitHub\Yapmt\src\Yapmt\Yapmt\obj\Debug\Yapmt.Migrations.AddedRequiredToFields.resources
 C:\Users\dmssa\Documents\GitHub\Yapmt\src\Yapmt\Yapmt\obj\Debug\Yapmt.Migrations.AddCompleteStatusToTask.resources
+C:\Users\dmssa\Documents\GitHub\Yapmt\src\Yapmt\Yapmt\obj\Debug\Yapmt.Migrations.addedCascadeDelete.resources

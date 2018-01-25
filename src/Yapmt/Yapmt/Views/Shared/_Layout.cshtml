@@ -34,7 +34,7 @@
         <footer></footer>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal New Project-->
     <div class="modal fade" id="newProdModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -45,34 +45,44 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="/Project/Create" method="post">
+                    <div>
                         <div class="form-group">
                             <label for="newProjectName">Name</label>
-                            <input type="text" id="projName" required name="name" class="form-control" id="newProjectName" placeholder="Enter Project Name">
+                            <input type="text" id="newProjectName" class="form-control" placeholder="Enter Project Name">
                         </div>
-                    </form>
+                        <small id="projAddInfo" class="form-text text-muted" style="color:red; visibility:hidden;">
+                            Please fill in the name.
+                        </small>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" id="submitProject" class="btn btn-primary">Save changes</button>
+                    <button type="button" id="submitProject" class="btn btn-primary">Save changes</button>
                 </div>
                 <script>
                     $(function () {
-                        $("#submitProject").click(function () {
-                            $('form').submit();
+                        $("#newProjectName").keypress(function (e) {
+                            if (e.keyCode == 13) {
+                                $('#submitProject').click();
+                            }
                         });
 
-                        function submit() {
-                            var data = {
-                                name: $('#projname').val()
-                            };
+                        $("#submitProject").click(function () {
+                            var projName = $('#newProjectName').val();
 
-                            $.post("/Project/Create", { formData: data },
-                                function () { alert('Successfully posted to server') });
-                        }
+                            if (projName === "" || projName === undefined) {
+                                $('#projAddInfo').css("visibility", "visible");
+                            }
+                            else {
+                                var data = {
+                                    name: projName
+                                };
+
+                                $.post("/Project/Create", { project: data },
+                                    function () { window.location.href = "/"; });
+                            }
+                        });
                     });
-
-                    
                 </script>
             </div>
         </div>
