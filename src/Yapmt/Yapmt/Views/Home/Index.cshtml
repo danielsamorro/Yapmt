@@ -11,9 +11,12 @@
 <div class="row">
     @foreach (var project in Model.Projects)
     {
-        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12  tile-box">
+        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 tile-box">
             <div class="project-tile">
-                <a href="/Project/Index/@project.Id">@project.Name</a>
+                <a class="project-delete" href="Project/Delete/@project.Id">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </a>
+                <a class="project-link" href="/Project/Index/@project.Id">@project.Name</a>
             </div>
         </div>
     }

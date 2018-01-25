@@ -33,9 +33,99 @@ textarea {
     text-align: center;
     color: white;
     padding: 10px;
+    height: 100px;
+    position: relative;
+    text-align: center;
 }
 
-.project-tile a {
+.project-tile .project-link  {
     color: inherit;
     text-decoration: none;
+    position: absolute;
+    margin: auto;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
 }
+
+.project-tile .project-delete {
+    color: inherit;
+    position: absolute;
+    text-decoration: none;
+    margin: auto;
+    top: 5px;
+    right: 5px;
+}
+
+.project-details {
+    margin: 25px 0px 25px 0px;
+    background-color: lightgray;
+    position: relative;
+    color: black;
+    min-height: 70px;
+    border-radius: 10px;
+}
+
+.project-details h2 {
+    color: inherit;
+    position: absolute;
+    left: 10px;
+    margin: auto;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.project-details .project-delete {
+    color: inherit;
+    position: absolute;
+    text-decoration: none;
+    right: 10px;
+    margin: auto;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+.project-details .taskStatus {
+    color: inherit;
+    position: absolute;
+    text-decoration: none;
+    right: 50px;
+    margin: auto;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
+ 
+
+td {
+    position: relative;
+}
+
+tr.strike td:before {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    border-bottom: 1px solid #111;
+    width: 100%;
+}
+
+tr.strike td:after {
+    content: "\00B7";
+    font-size: 1px;
+}
+
+.addTask-box {
+    margin: 25px 0px 25px 0px;
+    background-color: lightskyblue;
+    padding: 10px 10px 10px 10px;
+    position: relative;
+    color: black;
+    min-height: 70px;
+    border-radius: 10px;
+}
+
+    
+   
+

@@ -21,9 +21,12 @@ namespace Yapmt.Services
             _dbContext.SaveChanges();
         }
 
-        public void DeleteProject(int projectId)
+        public int DeleteProject(int projectId)
         {
-            _dbContext.Projects.Remove(_dbContext.Projects.Where(p => p.Id == projectId).SingleOrDefault());
+            var project = GetProject(projectId);
+
+            _dbContext.Projects.Remove(project);
+            return _dbContext.SaveChanges();
         }
 
         public List<Project> GetProjects()
@@ -58,11 +61,11 @@ namespace Yapmt.Services
             return _dbContext.Tasks.ToList();
         }
 
-        public void ChangeTaskStatus(int taskId)
+        public int ChangeTaskStatus(int taskId)
         {
             var task = _dbContext.Tasks.Where(t => t.Id == taskId).SingleOrDefault();
             task.Completed = !task.Completed;
-            _dbContext.SaveChanges();
+            return _dbContext.SaveChanges();
         }
 
     }

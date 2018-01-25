@@ -18,6 +18,6 @@ namespace Yapmt.Models
         [Required]
         public string Name { get; set; }
         
-        public List<Task> Tasks { get; set; }
+        public virtual List<Task> Tasks { get; set; }
     }
 }

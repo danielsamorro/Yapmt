@@ -6,6 +6,9 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -20,7 +23,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="#">New Project</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#newProdModal">New Project</a></li>
                 </ul>
             </div>
         </div>
@@ -28,12 +31,53 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-        </footer>
+        <footer></footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <!-- Modal -->
+    <div class="modal fade" id="newProdModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">New Project</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/Project/Create" method="post">
+                        <div class="form-group">
+                            <label for="newProjectName">Name</label>
+                            <input type="text" id="projName" required name="name" class="form-control" id="newProjectName" placeholder="Enter Project Name">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" id="submitProject" class="btn btn-primary">Save changes</button>
+                </div>
+                <script>
+                    $(function () {
+                        $("#submitProject").click(function () {
+                            $('form').submit();
+                        });
+
+                        function submit() {
+                            var data = {
+                                name: $('#projname').val()
+                            };
+
+                            $.post("/Project/Create", { formData: data },
+                                function () { alert('Successfully posted to server') });
+                        }
+                    });
+
+                    
+                </script>
+            </div>
+        </div>
+    </div>
+
+
 </body>
 </html>

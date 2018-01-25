@@ -2,9 +2,83 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var completedTaskCount = Model.Project.Tasks.Where(t => t.Completed).Count();
+    var inTimeTaskCount = Model.Project.Tasks.Where(t => !t.Completed && t.DueDate >= DateTime.Today).Count();
+    var lateTaskCount = Model.Project.Tasks.Where(t => !t.Completed && t.DueDate < DateTime.Today).Count();
 }
 
-<h2>Index</h2>
+<div class="project-details">
+    <h2>@Model.Project.Name</h2>
+    <span class="taskStatus">@completedTaskCount /     @lateTaskCount / @Model.Project.Tasks.Count</span>
+    <a class="project-delete" href="/Project/Delete/@Model.Project.Id">
+        <span class="glyphicon glyphicon-trash"></span>
+    </a>
+</div>
 
-@Model.Project.Name
+<div class="addTask-box">
+    <form>
+        <div class="row">
+            <div class="form-group col-lg-6">
+                <label for="addTaskDescription">Description</label>
+                <input type="text" class="form-control" id="addTaskDescription" placeholder="Description">
+            </div>
+            <div class="form-group col-lg-2">
+                <label for="addTaskOwner">Owner</label>
+                <input type="text" class="form-control" id="addTaskOwner" placeholder="Owner">
+            </div>
+            <div class="form-group col-lg-2">
+                <label for="addTaskDueDate">Due Date</label>
+                <input type="date" id="addTaskDueDate" class="form-control" placeholder="Due Date" name="bday">
+            </div>
+            <div class="col-lg-1">
+                <label for="addTaskDueDate"></label>
+                <button type="submit" class="btn btn-primary">Add Task</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Completed</th>
+            <th scope="col">Description</th>
+            <th scope="col">Owner</th>
+            <th scope="col">Due Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var task in Model.Project.Tasks.OrderBy(t => t.DueDate))
+        {
+            var status = task.Completed ? "" : task.DueDate < DateTime.Today ? "danger" : "";
+            var strikeClass = task.Completed ? "strike" : "";
+
+            <tr class="@strikeClass @status">
+                <td scope="row">
+                    <input type="checkbox" checked="@task.Completed" class="form-check-input" id="checkTask-@task.Id">
+                    <script>
+                        $(function () {
+                            $("#checkTask-@task.Id").change(function () {
+                                window.location.href = "/Project/CompleteTask/@task.Id";
+                            });
+                        });
+                    </script>
+                </td>
+                <td>@task.Description</td>
+                <td>@task.Owner</td>
+                <td>@task.DueDate.ToShortDateString()</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
 
